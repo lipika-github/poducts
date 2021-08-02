@@ -1,0 +1,31 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Product List</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped" id="products">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Product Category</th>
+            <th>Product Name</th>
+            <th>Product Description</th>
+            <th>Units</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products | async">
+            <td>{{product.productId}}</td>
+            <td>{{product.productCategory}}</td>
+            <td>{{product.productName}}</td>
+            <td>{{product.productDescription}}</td>
+            <td>{{product.units}}</td>
+            <td>
+                <button type="button" [routerLink]="['/update-product', product.productId]">Update Product</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
