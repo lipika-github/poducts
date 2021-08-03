@@ -20,7 +20,7 @@ export class UpdateProductComponent implements OnInit {
     this.product = new Product();
 
     this.productId = this.route.snapshot.params['productId'];
-    
+
     this.productService.getProduct(this.productId)
       .subscribe(data => {
         console.log(data)
@@ -36,7 +36,11 @@ export class UpdateProductComponent implements OnInit {
   }
 
   onSubmit() {
-    this.updateProduct();    
+    this.updateProduct();
+  }
+  reset(){
+    this.product = new Product();
+    this.router.navigate(['/search']);
   }
 
   gotoList() {

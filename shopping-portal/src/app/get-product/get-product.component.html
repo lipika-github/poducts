@@ -1,21 +1,92 @@
-<h2>Product Details</h2>
-
-<hr/>
-<div *ngIf="product">
-  <div>
-    <label><b>Product Category: </b></label> {{product.productCategory}}
-  </div>
-  <div>
-    <label><b>Product Name: </b></label> {{product.productName}}
-  </div>
-  <div>
-    <label><b>Product Description: </b></label> {{product.productDescription}}
-  </div>
-  <div>
-    <label><b>Units: </b></label> {{product.units}}
+<div class="container">
+  <div class="row">
+    <div id="custom-search-input">
+      <div class="input-group col-md-12" style="text-align: center">
+        <input type="text" class="search-query form-control" placeholder="Search With Product Category"  name="productCategory" [(ngModel)]="productCategory"/>
+        <span class="input-group-btn">
+                                        <button class="btn btn-danger" type="button" (click)="findUserByProductCategory()">
+                                            <span class=" glyphicon glyphicon-search"></span>
+                                        </button>
+                                    </span>
+      </div>
+    </div>
   </div>
 </div>
+<!--<div *ngIf="product">-->
+<!--  <div>-->
+<!--    <label><b>Product Category: </b></label> {{product.productCategory}}-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <label><b>Product Name: </b></label> {{product.productName}}-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <label><b>Product Description: </b></label> {{product.productDescription}}-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <label><b>Units: </b></label> {{product.units}}-->
+<!--  </div>-->
+<!--</div>-->
 
-<br>
-<br>
-<button (click)="list()" class="btn btn-primary">Back to Product List</button><br>
+<!--<br>-->
+<!--<br>-->
+<!--<button (click)="list()" class="btn btn-primary">Back to Product List</button><br>-->
+<!--<div class="container">-->
+<!--  <div class="container">-->
+<!--    <div class="row col-md-6 col-md-offset-2 custyle">-->
+<!--      <table class="table table-striped custab">-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--          <th>Product Id</th>-->
+<!--          <th>Product Category</th>-->
+<!--          <th>Product Name</th>-->
+<!--          <th>Product Description</th>-->
+<!--          <th>Units</th>-->
+
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr *ngIf = "product">-->
+<!--          <td>{{product.productId}}</td>-->
+<!--          <td>{{product.productCategory}}</td>-->
+<!--          <td>{{product.productName}}</td>-->
+<!--          <td>{{product.productDescription}}</td>-->
+<!--          <td>{{product.units}}</td>-->
+
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--      </table>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<div class="container"  *ngIf="products | async as productsList">
+  <div class="panel-heading">
+    <h2>Product List</h2>
+  </div>
+  <div class="container" *ngIf="productsList.length >0" >
+    <table class="table table-striped" id="products">
+      <thead>
+
+        <th>Product Id</th>
+        <th>Product Category</th>
+        <th>Product Name</th>
+        <th>Product Description</th>
+        <th>Units</th>
+        <th>Action</th>
+
+      </thead>
+      <tbody>
+      <tr *ngFor="let product of products | async">
+        <td>{{product.productId}}</td>
+        <td>{{product.productCategory}}</td>
+        <td>{{product.productName}}</td>
+        <td>{{product.productDescription}}</td>
+        <td>{{product.units}}</td>
+        <td>
+          <button type="button" [routerLink]="['/update-product', product.productId]">Update Product</button>
+
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
