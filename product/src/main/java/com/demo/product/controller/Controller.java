@@ -22,28 +22,40 @@ public class Controller {
 	
 	@Autowired
 	private ProductService service;
-	
+
+	@GetMapping("/")
+	public ResponseEntity healthCheck() {
+		return  ResponseEntity.ok("All good");
+	}
 	@GetMapping("/products")
 	public ResponseEntity getAllProducts() {
 		//return  ResponseEntity.ok("All good");
+
 		return ResponseEntity.ok(service.listAll());
 	}
-	
-	@GetMapping("/products/{productCategory}")
-	public ResponseEntity getProduct(@PathVariable String productCategory) {
-		System.out.println("in getProduct");
-		return ResponseEntity.ok(service.get(productCategory));
+
+
+	@GetMapping("/products/{productId}/{productCategory}")
+	public ResponseEntity getProduct(@PathVariable String productId ,@PathVariable String productCategory) {
+		if(!productId.equals("default")) {
+
+			return ResponseEntity.ok(service.getById(productId));
+		}
+		else if(!productCategory.equals("default")){
+
+			return ResponseEntity.ok(service.get(productCategory));
+		}
+		return ResponseEntity.badRequest().build();
 	}
 	
 	@PostMapping("/products")
 	public void addProduct(@RequestBody Product product) {
-		
+
 		service.save(product);
 	}
 	
 	@PutMapping("/products/{productId}")
-	public ResponseEntity<Product> updateProduct(@RequestBody Product product,@PathVariable String productId) throws ProductException{		
-		//System.out.println("in update");
+	public ResponseEntity<Product> updateProduct(@RequestBody Product product,@PathVariable String productId) {
 		return ResponseEntity.ok(service.update(productId,product));
 	}
 	

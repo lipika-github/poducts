@@ -12,6 +12,7 @@ export class UpdateProductComponent implements OnInit {
 
   productId: string;
   product: Product;
+  submitted = false;
 
   constructor(private route: ActivatedRoute,private router: Router,
     private productService: ProductService) { }
@@ -21,7 +22,7 @@ export class UpdateProductComponent implements OnInit {
 
     this.productId = this.route.snapshot.params['productId'];
 
-    this.productService.getProduct(this.productId)
+    this.productService.getProduct(this.productId,"default")
       .subscribe(data => {
         console.log(data)
         this.product = data;
@@ -31,17 +32,15 @@ export class UpdateProductComponent implements OnInit {
   updateProduct() {
     this.productService.updateProduct(this.productId, this.product)
       .subscribe(data => console.log(data), error => console.log(error));
-    this.product = new Product();
+   // this.product = new Product();
     this.gotoList();
   }
 
   onSubmit() {
+    this.submitted = true;
     this.updateProduct();
   }
-  reset(){
-    this.product = new Product();
-    this.router.navigate(['/search']);
-  }
+
 
   gotoList() {
     this.router.navigate(['/products']);

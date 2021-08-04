@@ -34,7 +34,7 @@ export class GetProductComponent implements OnInit {
      //this.productCategory = this.route.snapshot.params['productCategory'];
      // this.productService.getProductList();
      //this.products =this.router.navigate(['search',this.productCategory]);
-    this.products= this.productService.getProduct(this.productCategory);
+    this.products= this.productService.getProduct("default",this.productCategory);
     //resp.subscribe((data)=>this.products=data);
   }
   list(){

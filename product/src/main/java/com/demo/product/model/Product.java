@@ -1,9 +1,6 @@
 package com.demo.product.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -20,14 +17,19 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name="product")
 public class Product {
 	@Id
     @GenericGenerator(name = "product_id", strategy = "com.demo.product.util.ProductIdGenerator")
-    @GeneratedValue(generator = "product_id")  
+    @GeneratedValue(generator = "product_id")
     @Column(name="product_id")
-	private String productId;	
-	private String productCategory; 
+	private String productId;
+	@Column(name="product_category")
+	private String productCategory;
+	@Column(name="product_name")
 	private String productName;
+	@Column(name="product_description")
 	private String productDescription;
+	@Column(name="units")
 	private int units;
 }

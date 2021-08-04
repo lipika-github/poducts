@@ -6,23 +6,26 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductService {
-  ROOT_URI:string="http://localhost:5000"
-  // ROOT_URI:string="http://product-info.us-east-1.elasticbeanstalk.com"
+ // ROOT_URI:string="http://localhost:5000"
+   ROOT_URI:string="http://product-info.us-east-1.elasticbeanstalk.com"
   private baseUrl = this.ROOT_URI+'/products';
 
   constructor(private http: HttpClient) { }
 
-  getProduct(productCategory: string): Observable<any> {
-    console.log("productCategory"+productCategory);
-    return this.http.get(`${this.baseUrl}/${productCategory}`);
+
+  getProduct(productId: string,productCategory:string): Observable<any> {
+    console.log("productId in get"+productId);
+    return this.http.get(`${this.baseUrl}/${productId}/${productCategory}`);
   }
 
   addProduct(product: Object): Observable<Object> {
+    console.log("productId  in add"+product);
     return this.http.post(`${this.baseUrl}`, product);
   }
 
-  updateProduct(id: string, value: any): Observable<Object> {
-    return this.http.put(`${this.baseUrl}/${id}`, value);
+  updateProduct(productId: string, value: any): Observable<Object> {
+    console.log("productId  in update"+productId);
+    return this.http.put(`${this.baseUrl}/${productId}`, value);
   }
 
   getProductList(): Observable<any> {

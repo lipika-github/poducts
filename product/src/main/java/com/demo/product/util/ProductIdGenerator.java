@@ -7,14 +7,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.demo.product.service.ProductService;
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SessionImplementor;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.id.IdentifierGenerator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ProductIdGenerator implements IdentifierGenerator{
 
-
+	Logger logger= LoggerFactory.getLogger(ProductIdGenerator.class);
 	@Override
 	public Serializable generate(SharedSessionContractImplementor session, Object object) throws HibernateException {
 		 String prefix = "P";
@@ -22,12 +25,15 @@ public class ProductIdGenerator implements IdentifierGenerator{
 
 		    try {
 		        Statement statement=connection.createStatement();
+				logger.info("generate the id");
+		        ResultSet rs=statement.executeQuery("select count(product_id) as Id from product");
 
-		        ResultSet rs=statement.executeQuery("select count(product_id) as Id from Product");
 
+				String generatedId="";
 		        if(rs.next())
 		        {
-		        	int count=0;String generatedId="";
+
+					int count=0;
 		            int id=rs.getInt(1)+1;
 		            int num=id;
 		            while (num != 0) {
@@ -42,6 +48,11 @@ public class ProductIdGenerator implements IdentifierGenerator{
 		            }
 		            return generatedId;
 		        }
+		        else{
+
+					generatedId = prefix + Integer.valueOf("0")+Integer.valueOf("1");
+					return generatedId;
+				}
 		    } catch (SQLException e) {
 		        
 		        e.printStackTrace();

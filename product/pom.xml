@@ -30,10 +30,10 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-jpa</artifactId>
     </dependency> 
-    <!-- <dependency>
+    <!--<dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
-    </dependency> -->
+    </dependency>-->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
@@ -62,7 +62,14 @@
   </dependencies>
 
   <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
     <plugins>
+
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
@@ -73,9 +80,36 @@
               <artifactId>lombok</artifactId>
             </exclude>
           </excludes>
+          <!--<profiles>
+
+            <profile>
+              <id>local</id>
+              <activation>
+                <activeByDefault>true</activeByDefault>
+              </activation>
+              <properties>
+                <property>
+                  <name>spring.profiles.active</name>
+                  <value>local</value>
+                </property>
+              </properties>
+            </profile>
+
+            <profile>
+              <id>dev</id>
+              <properties>
+                <property>
+                  <name>spring.profiles.active</name>
+                  <value>dev</value>
+                </property>
+              </properties>
+            </profile>
+          </profiles>-->
         </configuration>
+
       </plugin>
     </plugins>
+
   </build>
 
 </project>
