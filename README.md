@@ -2,8 +2,10 @@
 ## Scope
 This is a online demo shopping market - an inventory to be managed in a completely digitized manner without manual interventions. This repo is an attempt  to enable this.
 
+
 ## High Level Application Architecture
 ![image](https://user-images.githubusercontent.com/67517333/128594977-00b43c8c-c967-48a1-a6a0-d37d98e1971b.png)
+
 
 ## Technology Selection
 * [Java](https://openjdk.java.net/) used for backend service implementation.
@@ -11,6 +13,7 @@ This is a online demo shopping market - an inventory to be managed in a complete
 * [Angular](https://angularjs.org/) is used for frontend development.
 * [AWS stack](https://aws.amazon.com/) infra is used as application host server.
 * [Keycloak](https://www.keycloak.org/) is used for OAuth server.
+
 
 ## How to use the application
 * Open shopping portal
