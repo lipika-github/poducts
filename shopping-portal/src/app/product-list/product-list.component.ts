@@ -26,9 +26,6 @@ export class ProductListComponent implements OnInit {
   }
 
 
-
-
-
   updateProduct(id: string){
     this.router.navigate(['update-product', id]);
   }

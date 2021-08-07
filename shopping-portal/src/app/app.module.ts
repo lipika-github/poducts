@@ -7,8 +7,13 @@ import { UpdateProductComponent } from './update-product/update-product.componen
 import { ProductListComponent } from './product-list/product-list.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { GetProductComponent } from './get-product/get-product.component';
+
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { HomeComponentComponent } from './home-component/home-component.component';
+import {RouterModule} from "@angular/router";
+import { LoginComponent } from './login/login.component';
+
 
 @NgModule({
   declarations: [
@@ -16,13 +21,15 @@ import { FormsModule } from '@angular/forms';
     UpdateProductComponent,
     ProductListComponent,
     AddProductComponent,
-    GetProductComponent
+    GetProductComponent,
+    HomeComponentComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

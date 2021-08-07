@@ -2,14 +2,14 @@
   <div class="header">
     <h1>Online Shopping Mart</h1>
   </div>
-
   <div class="navbar">
     <a class="nav-link" routerLink="/home">Home</a>
-    <a class="nav-link" routerLink="/products">Product List</a>
-    <a class="nav-link" routerLink="/add-product">Add Product</a>
-    <a class="nav-link" routerLink="/search">Search Product By Category</a>
-  </div>
 
+      <h1>Welcome !!</h1>
+        <a class="nav-link"  *ngIf="isLoggedIn" routerLink="/products">Product List</a>
+        <a class="nav-link" *ngIf="isLoggedIn" routerLink="/add-product">Add Product</a>
+        <a class="nav-link" *ngIf="isLoggedIn"  routerLink="/search">Search Product By Category</a>
+  </div>
   <body>
     <div class="main">
       <router-outlet></router-outlet>

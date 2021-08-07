@@ -27,6 +27,10 @@ public class Controller {
 	public ResponseEntity healthCheck() {
 		return  ResponseEntity.ok("All good");
 	}
+	@GetMapping("/callback")
+	public boolean test() {
+		return  false;
+	}
 	@GetMapping("/products")
 	public ResponseEntity getAllProducts() {
 		//return  ResponseEntity.ok("All good");

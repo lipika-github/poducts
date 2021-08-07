@@ -1,0 +1,8 @@
+<div class="container">
+
+  <button *ngIf="!isLoggedIn" class="btn btn-primary" (click)="login()" type="submit">Login</button>
+  <button *ngIf="isLoggedIn" class="btn btn-primary" (click)="logout()" type="submit">LogOut</button>
+
+<div>
+<router-outlet></router-outlet>
+

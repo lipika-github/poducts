@@ -4,8 +4,14 @@ import { UpdateProductComponent } from './update-product/update-product.componen
 import { ProductListComponent } from './product-list/product-list.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { GetProductComponent } from './get-product/get-product.component';
+
+import {HomeComponentComponent} from "./home-component/home-component.component";
+import {LoginComponent} from "./login/login.component";
 const routes: Routes = [
+
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponentComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'products', component: ProductListComponent },
   { path: 'add-product', component: AddProductComponent },
   { path: 'update-product/:productId', component: UpdateProductComponent },
