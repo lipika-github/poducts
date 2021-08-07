@@ -2,6 +2,9 @@
 ## Scope
 This is a online demo shopping market - an inventory to be managed in a completely digitized manner without manual interventions. This repo is an attempt  to enable this.
 
+## High Level Application Architecture
+![image](https://user-images.githubusercontent.com/67517333/128594977-00b43c8c-c967-48a1-a6a0-d37d98e1971b.png)
+
 ## How to use the application
 * Open shopping portal
   http://product-frontend.s3-website-us-east-1.amazonaws.com
